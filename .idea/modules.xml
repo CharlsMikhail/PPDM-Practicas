@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/PPDM-Practicas.iml" filepath="$PROJECT_DIR$/.idea/PPDM-Practicas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PRACTICA 1/PRACTICA 1.iml" filepath="$PROJECT_DIR$/PRACTICA 1/PRACTICA 1.iml" />
+    </modules>
+  </component>
+</project>
