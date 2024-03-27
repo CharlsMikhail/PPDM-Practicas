@@ -3,7 +3,7 @@
  * tambien usar métodos get y set hacer validaciones.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 23/03/24
- * @lastModification 24/03/24
+ * @lastModification 26/03/24
  */
 
 class CuentaBancaria(saldo: Float, private var limiteRetiro: Float) {
