@@ -3,46 +3,44 @@
  * tambien usar métodos get y set hacer validaciones.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 23/03/24
- * @lastModification ?
+ * @lastModification 24/03/24
  */
 
-class CuentaBancaria(saldo: Float, var limiteRetiro: Float) {
-
-    var saldo: Float = saldo
-        set(saldoNuevo) {
-            // Validamos que el saldo sea positivo.
-            if (saldoNuevo >= 0)
-                field = saldoNuevo
+class CuentaBancaria(saldo: Float, private var limiteRetiro: Float) {
+    private var saldo: Float = saldo
+        set(value) {
+            // Se verifica que el saldo sea positivo antes de actualizarlo.
+            if (value >= 0) {
+                field = value
+                println("Operación realizado con éxito. Nuevo saldo: $saldo")
+            }
             else
-                println("Error, no se puede establecer un saldo negativo")
+                println("Error, fondos insuficientes para realizar el retiro.")
         }
-        get() {
-            return field
-        }
+        //  No tenemos alguna modificación que hacer para reeescribir el get(), estariamos redundando.
+        get() = field
+
     fun realizarRetiro(montoRetiro: Float) {
-        // Validamos que el retiro no osbre pase el limite de retiro establecido.
-        if (montoRetiro > limiteRetiro) {
-            println("Error, el monto a retirar sobrepasa el limite de retiro.")
-        } else {
-            saldo -= montoRetiro
+        // Se verifica si el monto a retirar excede el límite establecido.
+        when {
+            montoRetiro < 0 -> println("Error, el monto de retiro no puede ser negativo")
+            montoRetiro > limiteRetiro -> println("Error, el monto a retirar supera el límite de retiro.")
+            else -> saldo -= montoRetiro
         }
+    }
+
+    fun imprimirSaldo() {
+        println("Saldo actual: $saldo")
     }
 }
 
 fun main() {
     val cuenta = CuentaBancaria(1200F, 500F)
-    println("Saldo actual: ${cuenta.saldo}")
-
-    // Probamos el correcto funcionamiento de nuestro diseño.
+    // Probamos el funcionamiento de la función realizarRetiro() con distintos montos de retiro.
+    cuenta.imprimirSaldo()
     cuenta.realizarRetiro(500F)
-    println("Saldo actual: ${cuenta.saldo}")
-
     cuenta.realizarRetiro(800F)
-    println("Saldo actual: ${cuenta.saldo}")
-
     cuenta.realizarRetiro(500F)
-    println("Saldo actual: ${cuenta.saldo}")
-
     cuenta.realizarRetiro(300F)
-    println("Saldo actual: ${cuenta.saldo}")
+    cuenta.imprimirSaldo()
 }
