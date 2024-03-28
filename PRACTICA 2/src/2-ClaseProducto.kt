@@ -5,46 +5,33 @@ import java.lang.IllegalArgumentException
  * implementar el calulo del precio final.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 23/03/24
- * @lastModification ?
+ * @lastModification 28/03/24
  */
 
-class Producto(precio: Float, descuento: Float) {
-    var precio: Float = if (precio >= 0) precio
-    else {
-        throw IllegalArgumentException("El precio no puede ser nagativo")
-    }
-        set(precioNuevo) {
-            if (precioNuevo >= 0)
-                field = precioNuevo
+class Producto(precio: Double, descuento: Double) {
+    private var precio: Double = 0.0
+        set(value) {
+            if (value >= 0)
+                field = value
             else
                 println("Error el precio no puede ser negativo")
         }
-        get() {
-            return field
-        }
-    var descuento: Float = if (descuento <= this.precio) descuento
-        else {
-            throw IllegalArgumentException("El descuento no puede ser mayor al precio")
-        }
-        set(descuentoNuevo) {
-            if (descuentoNuevo <= precio)
-                field = descuentoNuevo
+        get() = field
+
+    private var descuento: Double = 0.0
+        set(value) {
+            if (value <= precio)
+                field = value
             else
-                println("El descuento no puede ser menor que el precio")
+                println("El descuento no puede ser mayor que el precio")
         }
-        get() {
-            return field
-        }
-    fun calcularPrecioFinal(): Float {
-        return precio - descuento
-    }
+        get() = field
+
+    fun calcularPrecioFinal(): Double = precio - descuento
 }
 
 fun main() {
     //Probando el correcto funcionamiento del diseño
-    val producto = Producto(30F, 5F)
+    val producto = Producto(30.0, 5.0)
     println(producto.calcularPrecioFinal())
-
-    //producto.descuento = 31F
-
 }
