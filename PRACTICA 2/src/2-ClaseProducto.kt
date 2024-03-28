@@ -14,24 +14,33 @@ class Producto(precio: Double, descuento: Double) {
             if (value >= 0)
                 field = value
             else
-                println("Error el precio no puede ser negativo")
+                throw IllegalArgumentException("Error, el precio no puede ser negativo")
         }
         get() = field
 
+    // El descuento es manejado en porcentaje del 0 al 100
     private var descuento: Double = 0.0
         set(value) {
-            if (value <= precio)
+            if (value in 0.0..100.0)
                 field = value
             else
-                println("El descuento no puede ser mayor que el precio")
+                throw IllegalArgumentException("Error, el descuento debe estar entre 0 y 100")
         }
         get() = field
 
-    fun calcularPrecioFinal(): Double = precio - descuento
+    //Usamos init para que las resticciones de los setters se cumplan al inicio.
+    init {
+        this.precio = precio
+        this.descuento = descuento
+    }
+
+    fun calcularPrecioFinal(): Double = precio - (precio * descuento/100)
+    // Como los atributos estan encapsulados se puede agregar funciones para tener acceso,
+    // pero estas tienen que tener diferente firma a set y get, por ejemplo: updatePrecio().
 }
 
 fun main() {
-    //Probando el correcto funcionamiento del diseño
-    val producto = Producto(30.0, 5.0)
-    println(producto.calcularPrecioFinal())
+    //Probando el correcto funcionamiento del diseño propuesto.
+    val producto = Producto(140.0, 50.0)
+    println("Precio final: ${producto.calcularPrecioFinal()}")
 }
