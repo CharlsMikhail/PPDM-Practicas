@@ -1,9 +1,9 @@
 /**
- * @problemDescription Se solicita diseñar una interfaz de Vehiculo Alqulable el cual sirva a las clases
+ * @problemDescription Se solicita diseñar una interfaz de Vehiculo Alquilable el cual sirva a las clases
  * Coche y Moto.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 24/03/24
- * @lastModification ?
+ * @lastModification 28/03/24
  */
 
 interface VehiculoAlquilabe {
@@ -11,20 +11,20 @@ interface VehiculoAlquilabe {
     fun devolverVehiculo()
 }
 
-class Coche(): VehiculoAlquilabe {
+class Coche: VehiculoAlquilabe {
     override fun alquilarVehiculo() {
-        println("El ${this.toString()} fue alquilado")
+        println("El ${toString()} fue alquilado")
     }
     override fun devolverVehiculo() {
-        println("El ${this.toString()} fue devuelto")
+        println("El ${toString()} fue devuelto")
     }
 }
-class Moto(): VehiculoAlquilabe {
+class Moto: VehiculoAlquilabe {
     override fun alquilarVehiculo() {
-        println("La ${this.toString()} fue alquilada")
+        println("La ${toString()} fue alquilada")
     }
     override fun devolverVehiculo() {
-        println("La ${this.toString()} fue devuelta")
+        println("La ${toString()} fue devuelta")
     }
 }
 
