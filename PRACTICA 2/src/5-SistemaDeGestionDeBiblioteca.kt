@@ -1,12 +1,11 @@
 /**
- * @problemDescription Se solicita diseñar un sistema de gestión de biblioteca que involucre usuarios y matearial como
+ * @problemDescription Se solicita diseñar un sistema de gestión de biblioteca que involucre usuarios y material como
  * revistas y libros.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 24/03/24
- * @lastModification ?
+ * @lastModification 28/03/24
  */
 
-// Clase abstracta Material
 abstract class Material(
     private var titulo: String,
     private var autor: String,
@@ -27,7 +26,6 @@ abstract class Material(
     }
 }
 
-// Clase Libro
 class Libro(
     titulo: String,
     autor: String,
@@ -42,7 +40,6 @@ class Libro(
     }
 }
 
-// Clase Revista
 class Revista(
     titulo: String,
     autor: String,
@@ -59,7 +56,6 @@ class Revista(
     }
 }
 
-// Clase Usuario
 class Usuario(private var nombre: String, private var apellido: String, private var edad: Int) {
     fun reservarMaterial(material: Material) {
         println("$nombre $apellido ha reservado el material: ${material.getTitulo()}")
@@ -70,7 +66,6 @@ class Usuario(private var nombre: String, private var apellido: String, private 
     }
 }
 
-// Clase Biblioteca
 class Biblioteca {
 
     // Se usan listas mutables para controlar el flujo de interacción entre los materiales y los usuarios.
@@ -102,8 +97,21 @@ class Biblioteca {
 
 fun main() {
     // Crear instancias de materiales
-    val libro = Libro("Cien años de soledad", "Gabriel García Márquez", 1967, "Realismo mágico", 368)
-    val revista = Revista("Time", "Time Inc.", 1923, "0040-781X", 202, 3)
+    val libro = Libro(
+        "Cien años de soledad",
+        "Gabriel García Márquez",
+        1967,
+        "Realismo mágico",
+        368
+    )
+    val revista = Revista(
+        "Time",
+        "Time Inc.",
+        1923,
+        "0040-781X",
+        202,
+        3
+    )
 
     // Crear instancia de usuario
     val usuario = Usuario("Pedro", "Lopez", 21)
