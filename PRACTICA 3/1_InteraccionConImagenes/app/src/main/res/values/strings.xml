@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">1_InteraccionConImagenes</string>
+    <string name="txt_custom">Escriba un mensaje personalizado</string>
 </resources>
