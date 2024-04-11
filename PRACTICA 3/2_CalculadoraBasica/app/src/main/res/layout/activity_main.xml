@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:paddingBottom="30dp"
-        android:text="3 + 9"
+        android:text="@string/btn_0"
         android:textAlignment="textEnd"
         style="@style/TextEstilo" />
 
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:paddingBottom="30dp"
-        android:text="= 12"
+        android:text="@string/btn_equal"
         android:layout_below="@id/txt_input"
         style="@style/TextEstilo" />
 
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
-        android:text="CRAM-Calculator"
+        android:text="@string/app_name"
         android:textAlignment="center"
         android:layout_above="@id/gd_cal"/>
 
