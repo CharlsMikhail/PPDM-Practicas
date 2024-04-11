@@ -6,9 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="30dp"
+    android:layout_gravity="bottom"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_input"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/txt_ouput"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
 
     <GridLayout
         android:layout_width="match_parent"
@@ -21,90 +32,103 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_7" />
+            android:text="@string/btn_7"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_8" />
+            android:text="@string/btn_8"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_9" />
+            android:text="@string/btn_9"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_div"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_divide" />
+            android:text="@string/btn_divide"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_4" />
+            android:text="@string/btn_4"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_5" />
+            android:text="@string/btn_5"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_6" />
+            android:text="@string/btn_6"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_mul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_multiply" />
+            android:text="@string/btn_multiply"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_1" />
+            android:text="@string/btn_1"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_2" />
+            android:text="@string/btn_2"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_3" />
+            android:text="@string/btn_3"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_res"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btn_subtract" />
+            android:text="@string/btn_subtract"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_0" />
+            android:text="@string/btn_0"
+            style="@style/BotonEstilo" />
 
 
         <Button
@@ -113,13 +137,15 @@
             android:layout_height="wrap_content"
             android:layout_columnSpan="2"
             android:layout_gravity="fill_horizontal"
-            android:text="@string/btn_equal" />
+            android:text="@string/btn_equal"
+            style="@style/BotonEstilo" />
 
         <Button
             android:id="@+id/btn_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_add" />
+            android:text="@string/btn_add"
+            style="@style/BotonEstilo" />
 
     </GridLayout>
 
