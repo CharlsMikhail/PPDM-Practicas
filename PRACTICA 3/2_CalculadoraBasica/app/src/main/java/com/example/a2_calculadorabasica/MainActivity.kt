@@ -30,43 +30,43 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     fun onButtonClick(view: View) {
+
         val buttonText = (view as Button).text.toString()
         val txtInput = findViewById<TextView>(R.id.txt_input)
         val txtOutput = findViewById<TextView>(R.id.txt_output)
+        if (txtOutput.text.length > 2) {
+            exp1 = 0
+            exp2 = 0
+            exp2Enable = false
+            operator = ""
+            txtInput.text = ""
+            txtOutput.text = "="
+        }
+
         val currentInput = txtInput.text.toString()
+
 
         when (buttonText) {
             in "0123456789" -> {
-                if (exp2Enable == true) exp2 = currentInput.toInt()
-                txtInput.text = currentInput + buttonText
+                if (exp2Enable == true) {
+                    val exp2SinCeros = (exp2.toString() + buttonText).trimStart('0')
+                    exp2 = exp2SinCeros.toInt()
+                    txtInput.text = currentInput + buttonText
+                } else {
+                    txtInput.text = currentInput + buttonText
+                }
             }
-            "+" -> {
+            in "+-*/" -> {
                 val currentText = txtInput.text.toString()
                 val newText = currentText + buttonText
                 exp1 = currentText.toInt()
                 txtInput.text = newText
                 operator = "+"
-            }
-            "-" -> {
-                val currentText = txtInput.text.toString()
-                val newText = currentText + buttonText
-                txtInput.text = newText
-            }
-            "*" -> {
-                val currentText = txtInput.text.toString()
-                val newText = currentText + buttonText
-                txtInput.text = newText
-            }
-            "/" -> {
-                val currentText = txtInput.text.toString()
-                val newText = currentText + buttonText
-                txtInput.text = newText
+                exp2Enable = true
             }
             "=" -> {
-                val expression = txtInput.text.toString()
                 val result = eval(exp1, exp2, operator)
                 txtOutput.text = "= $result"
-                txtInput.text = ""
             }
         }
     }
