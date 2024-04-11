@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                 val newText = currentText + buttonText
                 exp1 = currentText.toInt()
                 txtInput.text = newText
-                operator = "+"
+                operator = buttonText
                 exp2Enable = true
             }
             "=" -> {
