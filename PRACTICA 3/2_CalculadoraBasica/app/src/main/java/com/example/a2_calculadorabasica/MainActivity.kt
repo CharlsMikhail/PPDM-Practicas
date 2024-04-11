@@ -23,39 +23,37 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
     }
 
     fun onButtonClick(view: View) {
         val buttonText = (view as Button).text.toString()
         val txtInput = findViewById<TextView>(R.id.txt_input)
         val txtOutput = findViewById<TextView>(R.id.txt_output)
+        val currentInput = txtInput.text.toString()
 
         when (buttonText) {
-            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" -> {
+            in "0123456789" -> {
+                txtInput.text = currentInput + buttonText
+            }
+            "+" -> {
+                exp1 = true
                 val currentText = txtInput.text.toString()
                 val newText = currentText + buttonText
                 txtInput.text = newText
             }
-            "+" -> {
-                val currentText = txtInput.text.toString()
-                val newText = currentText + " + "
-                txtInput.text = newText
-            }
             "-" -> {
                 val currentText = txtInput.text.toString()
-                val newText = currentText + " - "
+                val newText = currentText + buttonText
                 txtInput.text = newText
             }
             "*" -> {
                 val currentText = txtInput.text.toString()
-                val newText = currentText + " * "
+                val newText = currentText + buttonText
                 txtInput.text = newText
             }
             "/" -> {
                 val currentText = txtInput.text.toString()
-                val newText = currentText + " / "
+                val newText = currentText + buttonText
                 txtInput.text = newText
             }
             "=" -> {
