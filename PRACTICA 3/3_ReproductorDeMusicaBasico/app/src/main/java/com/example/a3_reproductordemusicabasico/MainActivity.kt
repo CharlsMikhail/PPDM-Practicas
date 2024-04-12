@@ -96,11 +96,11 @@ class MainActivity : AppCompatActivity() {
                         txt_titulo.setText(R.string.txt_creep)
                     }
                     1 -> {iv.setImageResource(R.drawable.cumbia_port)
-                        txt_titulo.setText(R.string.txt_creep)
+                        txt_titulo.setText(R.string.txt_cumbia)
                     }
                     else -> {
                         iv.setImageResource(R.drawable.foster_port)
-                        txt_titulo.setText(R.string.txt_creep)
+                        txt_titulo.setText(R.string.txt_foster)
                     }
                 }
             } else {
@@ -127,11 +127,11 @@ class MainActivity : AppCompatActivity() {
                         txt_titulo.setText(R.string.txt_creep)
                     }
                     1 -> {iv.setImageResource(R.drawable.cumbia_port)
-                        txt_titulo.setText(R.string.txt_creep)
+                        txt_titulo.setText(R.string.txt_cumbia)
                     }
                     else -> {
                         iv.setImageResource(R.drawable.foster_port)
-                        txt_titulo.setText(R.string.txt_creep)
+                        txt_titulo.setText(R.string.txt_foster)
                     }
                 }
             } else {
