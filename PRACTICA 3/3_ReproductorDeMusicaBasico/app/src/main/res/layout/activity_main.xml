@@ -75,7 +75,7 @@
         app:srcCompat="@drawable/repetir" />
 
     <ImageButton
-        android:id="@+id/bnt_detener"
+        android:id="@+id/btn_detener"
         android:layout_width="55dp"
         android:layout_height="65dp"
         android:background="#00FFFFFF"
@@ -91,14 +91,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="Creep(Acoustic)-RadioHead"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/btn_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:text="@string/txt_creep" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
