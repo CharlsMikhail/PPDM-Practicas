@@ -6,13 +6,12 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-
 /**
  * @problemDescription Se solicita, crear una calculadora básica, que sume, reste, multplique
- * y divida la interacción se muestre en un un TextView.
+ * y divida; la interacción se muestre en un TextView.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 09/04/24
- * @lastModification 12/04/24
+ * @lastModification 13/04/24
  */
 
 class MainActivity : AppCompatActivity() {
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Agregar más digitos a la expresión actual
+    // Agregar más digitos a la expresión actual.
     private fun appendExp(digit: String) {
         if (isNewExp) exp2String += digit
         if (exp2String.isNotEmpty()) btnEqual.isEnabled = true // Aaeguramos que exp2 tenga digitos.
@@ -85,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Para habilitar o deshabilitar los botones de tal manera no causen errores.
     private fun setButtonsEnabled(enabled: Boolean) {
         val btnAdd = findViewById<Button>(R.id.btn_sum)
         val btnSub = findViewById<Button>(R.id.btn_res)
