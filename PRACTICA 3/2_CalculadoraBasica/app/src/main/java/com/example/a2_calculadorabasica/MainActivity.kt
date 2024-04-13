@@ -20,9 +20,10 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var txtInput: TextView
     lateinit var txtOutput: TextView
-    var exp1 = ""
-    var exp2 = ""
+    var exp1 = 0.0
+    var exp2 = 0.0
     var operator = ""
+    var exp2String = ""
     var isNewExp = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,40 +35,34 @@ class MainActivity : AppCompatActivity() {
 
     fun onButtonClick(view: View) {
         val buttonText = (view as Button).text.toString()
-
         when (buttonText) {
-            "=" -> txtOutput.text = eval().toString()
-            in "+-*/" -> {}
-            // Para los numeros
-            else -> {
-                if (exp2Enable == true) {
-                    val exp2SinCeros = (exp2.toString() + buttonText).trimStart('0')
-                    exp2 = exp2SinCeros.toInt()
-                    txtInput.text = currentInput + buttonText
-                } else {
-                    txtInput.text = currentInput + buttonText
-                }
-            }
-
+            "=" -> txtOutput.append(eval().toString())
+            in "+-*/" -> setOperator(buttonText)
+            // Para los números
+            else -> appendOperand(buttonText)
         }
-
     }
 
+    private fun appendOperand(digit: String) {
+        if (isNewExp) exp2String += digit
+        txtInput.append(digit)
+    }
 
     private fun setOperator(operator: String) {
         this.operator = operator
         isNewExp = true
-        exp1 = textView.text.toString()
+        exp1 = txtInput.text.toString().toDouble()
+        txtInput.append(this.operator)
     }
-    fun eval(): Double {
-        val num1 = exp1.toDouble()
-        val num2 = exp2.toDouble()
 
+    fun eval(): Double {
+        exp2 = exp2String.toDouble()
+        isNewExp = false
         return when(operator) {
-            "+" -> num1 + num2
-            "-" -> num1 - num2
-            "*" -> num1 * num2
-            else -> num1 / num2
+            "+" -> exp1 + exp2
+            "-" -> exp1 - exp2
+            "*" -> exp1 * exp2
+            else -> exp1 / exp2
         }
     }
 }
