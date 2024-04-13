@@ -18,13 +18,13 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var txtInput: TextView
-    lateinit var txtOutput: TextView
-    var exp1 = 0.0
-    var exp2 = 0.0
-    var operator = ""
-    var exp2String = ""
-    var isNewExp = false
+    private lateinit var txtInput: TextView
+    private lateinit var txtOutput: TextView
+    private var exp1 = 0.0
+    private var exp2 = 0.0
+    private var operator = ""
+    private var exp2String = ""
+    private var isNewExp = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onButtonClick(view: View) {
-        val buttonText = (view as Button).text.toString()
-        when (buttonText) {
+        when (val buttonText = (view as Button).text.toString()) {
             "=" -> txtOutput.append(eval().toString())
             in "+-*/" -> setOperator(buttonText)
             // Para los números
@@ -45,6 +44,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun appendOperand(digit: String) {
         if (isNewExp) exp2String += digit
+        if (txtOutput.text.isNullOrEmpty()) {
+            txtInput.text = ""
+            txtOutput.text = ""
+            exp2String = ""
+        }
         txtInput.append(digit)
     }
 
