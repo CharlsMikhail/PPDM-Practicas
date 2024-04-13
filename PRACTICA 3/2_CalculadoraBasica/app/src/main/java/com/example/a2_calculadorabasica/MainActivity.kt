@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var txtInput: TextView
     private lateinit var txtOutput: TextView
-    private lateinit var btn_equal: Button
+    private lateinit var btnEqual: Button
     private var exp1 = 0.0
     private var exp2 = 0.0
     private var operator = ""
@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        txtInput = findViewById<TextView>(R.id.txt_input)
-        txtOutput = findViewById<TextView>(R.id.txt_output)
-        btn_equal = findViewById<Button>(R.id.btn_equal)
+        txtInput = findViewById(R.id.txt_input)
+        txtOutput = findViewById(R.id.txt_output)
+        btnEqual = findViewById(R.id.btn_equal)
     }
 
     fun onButtonClick(view: View) {
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             txtInput.text = ""
             txtOutput.text = ""
             exp2String = ""
-            btn_equal.isEnabled = true
+            btnEqual.isEnabled = true
         }
         txtInput.append(digit)
     }
@@ -61,11 +61,11 @@ class MainActivity : AppCompatActivity() {
         txtInput.append(this.operator)
     }
 
-    fun eval(): Double {
+    private fun eval(): Double {
         exp2 = exp2String.toDouble()
         isNewExp = false
 
-        btn_equal.isEnabled = false
+        btnEqual.isEnabled = false
 
         return when(operator) {
             "+" -> exp1 + exp2
