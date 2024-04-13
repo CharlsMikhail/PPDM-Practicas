@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
     fun onButtonClick(view: View) {
         when (val buttonText = (view as Button).text.toString()) {
-            "=" -> txtOutput.append(eval().toString())
+            "=" -> txtOutput.append("= " + eval().toString())
             in "+-*/" -> setOper(buttonText)
             else -> appendExp(buttonText) // Para los botones del 0 al 9
         }
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     // Agregar más digitos a la expresión actual
     private fun appendExp(digit: String) {
         if (isNewExp) exp2String += digit
-        if (!exp2String.isEmpty()) btnEqual.isEnabled = true // Aaeguramos que exp2 tenga digitos.
+        if (exp2String.isNotEmpty()) btnEqual.isEnabled = true // Aaeguramos que exp2 tenga digitos.
         if (!txtOutput.text.isNullOrEmpty()) { // Para restaurar valores y limpiar la interfaz.
             txtInput.text = ""
             txtOutput.text = ""
