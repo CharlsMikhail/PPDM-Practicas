@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var posicion = 0
-        var repetir = 0
+        var repetir = false
 
         val imgFront = findViewById<ImageView>(R.id.imageView)
         val txt_titulo = findViewById<TextView>(R.id.txt_titulo)
@@ -59,11 +59,7 @@ class MainActivity : AppCompatActivity() {
         // Método para el boton DETENER
         btn_stop.setOnClickListener() {
             mediaPlayerList[posicion].stop()
-            mediaPlayerList = listOf(
-                MediaPlayer.create(this, R.raw.creep),
-                MediaPlayer.create(this, R.raw.cumbia),
-                MediaPlayer.create(this, R.raw.foster)
-            )
+            mediaPlayerList[0].prepare()
             posicion = 0
             play_pause.setImageResource(R.drawable.boton_de_play)
             imgFront.setImageResource(R.drawable.creep_port)
@@ -71,20 +67,22 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "   Stop", Toast.LENGTH_SHORT).show()
         }
 
+        // Metodo para el boton REPETIR
         btn_repetir.setOnClickListener() {
-            if (repetir == 1) {
+            if (repetir) {
                 btn_repetir.setImageResource(R.drawable.repetir)
                 Toast.makeText(this, "No repetir", Toast.LENGTH_SHORT).show()
                 mediaPlayerList[posicion].isLooping = false
-                repetir = 2
+                repetir = false
             } else {
                 btn_repetir.setImageResource(R.drawable.repetir2)
                 Toast.makeText(this, "Repetir", Toast.LENGTH_SHORT).show()
                 mediaPlayerList[posicion].isLooping = true
-                repetir = 1
+                repetir = true
             }
         }
 
+        // Metodo para el boton SIGUEINTE
         btn_siguiente.setOnClickListener() {
             if (posicion < mediaPlayerList.size - 1) {
                 if (mediaPlayerList[posicion].isPlaying()) {
