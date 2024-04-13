@@ -1,6 +1,5 @@
 package com.example.a2_calculadorabasica
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var txtInput: TextView
     private lateinit var txtOutput: TextView
+    private lateinit var btn_equal: Button
     private var exp1 = 0.0
     private var exp2 = 0.0
     private var operator = ""
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         txtInput = findViewById<TextView>(R.id.txt_input)
         txtOutput = findViewById<TextView>(R.id.txt_output)
+        btn_equal = findViewById<Button>(R.id.btn_equal)
     }
 
     fun onButtonClick(view: View) {
@@ -44,10 +45,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun appendOperand(digit: String) {
         if (isNewExp) exp2String += digit
-        if (txtOutput.text.isNullOrEmpty()) {
+        if (!txtOutput.text.isNullOrEmpty()) {
             txtInput.text = ""
             txtOutput.text = ""
             exp2String = ""
+            btn_equal.isEnabled = true
         }
         txtInput.append(digit)
     }
@@ -62,6 +64,9 @@ class MainActivity : AppCompatActivity() {
     fun eval(): Double {
         exp2 = exp2String.toDouble()
         isNewExp = false
+
+        btn_equal.isEnabled = false
+
         return when(operator) {
             "+" -> exp1 + exp2
             "-" -> exp1 - exp2
