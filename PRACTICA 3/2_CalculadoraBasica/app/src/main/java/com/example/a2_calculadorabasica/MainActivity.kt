@@ -18,36 +18,28 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    var exp1: Int = 0
-    var exp2: Int = 0
-    var exp2Enable = false
+    lateinit var txtInput: TextView
+    lateinit var txtOutput: TextView
+    var exp1 = ""
+    var exp2 = ""
     var operator = ""
+    var isNewExp = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        txtInput = findViewById<TextView>(R.id.txt_input)
+        txtOutput = findViewById<TextView>(R.id.txt_output)
     }
 
-    @SuppressLint("SetTextI18n")
     fun onButtonClick(view: View) {
-
         val buttonText = (view as Button).text.toString()
-        val txtInput = findViewById<TextView>(R.id.txt_input)
-        val txtOutput = findViewById<TextView>(R.id.txt_output)
-        if (txtOutput.text.length > 2) {
-            exp1 = 0
-            exp2 = 0
-            exp2Enable = false
-            operator = ""
-            txtInput.text = ""
-            txtOutput.text = "="
-        }
-
-        val currentInput = txtInput.text.toString()
-
 
         when (buttonText) {
-            in "0123456789" -> {
+            "=" -> txtOutput.text = eval().toString()
+            in "+-*/" -> {}
+            // Para los numeros
+            else -> {
                 if (exp2Enable == true) {
                     val exp2SinCeros = (exp2.toString() + buttonText).trimStart('0')
                     exp2 = exp2SinCeros.toInt()
@@ -56,22 +48,21 @@ class MainActivity : AppCompatActivity() {
                     txtInput.text = currentInput + buttonText
                 }
             }
-            in "+-*/" -> {
-                val currentText = txtInput.text.toString()
-                val newText = currentText + buttonText
-                exp1 = currentText.toInt()
-                txtInput.text = newText
-                operator = buttonText
-                exp2Enable = true
-            }
-            "=" -> {
-                val result = eval(exp1, exp2, operator)
-                txtOutput.text = "= $result"
-            }
+
         }
+
     }
 
-    fun eval(num1: Int, num2: Int, operator: String): Int {
+
+    private fun setOperator(operator: String) {
+        this.operator = operator
+        isNewExp = true
+        exp1 = textView.text.toString()
+    }
+    fun eval(): Double {
+        val num1 = exp1.toDouble()
+        val num2 = exp2.toDouble()
+
         return when(operator) {
             "+" -> num1 + num2
             "-" -> num1 - num2
