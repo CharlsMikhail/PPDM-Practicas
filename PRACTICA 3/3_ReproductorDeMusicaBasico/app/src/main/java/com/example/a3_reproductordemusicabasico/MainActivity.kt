@@ -2,7 +2,6 @@ package com.example.a3_reproductordemusicabasico
 
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,11 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * @problemDescription Se solicita, crear un reproductor de musica basico que contenga:
- * reproducir, pausar y detener la musica local.
+ * @problemDescription Se solicita, crear un reproductor de musica básico que contenga:
+ * reproducir, pausar y detener musica.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 09/04/24
- * @lastModification 09/04/24
+ * @lastModification 13/04/24
  */
 
 class MainActivity : AppCompatActivity() {
@@ -28,15 +27,15 @@ class MainActivity : AppCompatActivity() {
         var repetir = false
 
         val imgFront = findViewById<ImageView>(R.id.imageView)
-        val txt_titulo = findViewById<TextView>(R.id.txt_titulo)
+        val txtTitulo = findViewById<TextView>(R.id.txt_titulo)
 
-        val play_pause = findViewById<ImageButton>(R.id.btn_play)
-        val btn_repetir = findViewById<ImageButton>(R.id.btn_repetir)
-        val btn_stop = findViewById<ImageButton>(R.id.btn_detener)
-        val btn_anterior = findViewById<ImageButton>(R.id.btn_anterior)
-        val btn_siguiente = findViewById<ImageButton>(R.id.btn_siguiente)
+        val playPause = findViewById<ImageButton>(R.id.btn_play)
+        val btnRepetir = findViewById<ImageButton>(R.id.btn_repetir)
+        val btnStop = findViewById<ImageButton>(R.id.btn_detener)
+        val btnAnterior = findViewById<ImageButton>(R.id.btn_anterior)
+        val btnSiguiente = findViewById<ImageButton>(R.id.btn_siguiente)
 
-        // Creamos la lista de reporduccion
+        // Creamos la lista de reproducción
         fun inicializarMediaPLayer() {
             mediaPlayerList = listOf(
                 MediaPlayer.create(this, R.raw.creep),
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        inicializarMediaPLayer()
+        inicializarMediaPLayer() // Inicializamos por primera vez la lista de reproducción.
 
         fun actualizarInterfaz() {
             val (imagen, titulo) = when (posicion) {
@@ -54,42 +53,42 @@ class MainActivity : AppCompatActivity() {
                 else -> Pair(R.drawable.foster_port, R.string.txt_foster)
             }
             imgFront.setImageResource(imagen)
-            txt_titulo.setText(titulo)
-            play_pause.setImageResource(R.drawable.boton_de_pausa)
+            txtTitulo.setText(titulo)
+            playPause.setImageResource(R.drawable.boton_de_pausa)
         }
 
         // Método para el boton PLAY & PAUSE
-        play_pause.setOnClickListener() {
+        playPause.setOnClickListener {
             if (mediaPlayerList[posicion].isPlaying) {
                 mediaPlayerList[posicion].pause()
-                play_pause.setImageResource(R.drawable.boton_de_play)
+                playPause.setImageResource(R.drawable.boton_de_play)
                 Toast.makeText(this, " Pause", Toast.LENGTH_SHORT).show()
             } else {
                 mediaPlayerList[posicion].start()
-                play_pause.setImageResource(R.drawable.boton_de_pausa)
+                playPause.setImageResource(R.drawable.boton_de_pausa)
                 Toast.makeText(this, "   Play", Toast.LENGTH_SHORT).show()
             }
         }
 
         // Método para el boton DETENER
-        btn_stop.setOnClickListener() {
+        btnStop.setOnClickListener {
             mediaPlayerList[posicion].stop()
             posicion = 0
             inicializarMediaPLayer()
             actualizarInterfaz()
-            play_pause.setImageResource(R.drawable.boton_de_play)
+            playPause.setImageResource(R.drawable.boton_de_play)
             Toast.makeText(this, "   Stop", Toast.LENGTH_SHORT).show()
         }
 
         // Método para el boton REPETIR
-        btn_repetir.setOnClickListener() {
+        btnRepetir.setOnClickListener {
             if (repetir) {
-                btn_repetir.setImageResource(R.drawable.repetir)
+                btnRepetir.setImageResource(R.drawable.repetir)
                 Toast.makeText(this, "No repetir", Toast.LENGTH_SHORT).show()
                 mediaPlayerList[posicion].isLooping = false
                 repetir = false
             } else {
-                btn_repetir.setImageResource(R.drawable.repetir2)
+                btnRepetir.setImageResource(R.drawable.repetir2)
                 Toast.makeText(this, "Repetir", Toast.LENGTH_SHORT).show()
                 mediaPlayerList[posicion].isLooping = true
                 repetir = true
@@ -97,9 +96,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Método para el boton SIGUIENTE
-        btn_siguiente.setOnClickListener() {
+        btnSiguiente.setOnClickListener {
             if (posicion < mediaPlayerList.size - 1) {
-                mediaPlayerList[posicion].stop();
+                mediaPlayerList[posicion].stop()
                 posicion++
                 mediaPlayerList[posicion].start()
                 actualizarInterfaz()
@@ -109,10 +108,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Método para el boton ANTERIOR
-        btn_anterior.setOnClickListener() {
+        btnAnterior.setOnClickListener {
             if (posicion >= 1) {
-                mediaPlayerList[posicion].stop();
-                mediaPlayerList[posicion].prepareAsync();
+                mediaPlayerList[posicion].stop()
+                mediaPlayerList[posicion].prepareAsync()
                 posicion--
                 mediaPlayerList[posicion].prepare()
                 mediaPlayerList[posicion].start()
