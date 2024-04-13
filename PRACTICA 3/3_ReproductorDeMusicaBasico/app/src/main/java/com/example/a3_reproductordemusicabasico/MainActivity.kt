@@ -37,11 +37,15 @@ class MainActivity : AppCompatActivity() {
         val btn_siguiente = findViewById<ImageButton>(R.id.btn_siguiente)
 
         // Creamos la lista de reporduccion
-        mediaPlayerList = listOf(
-            MediaPlayer.create(this, R.raw.creep),
-            MediaPlayer.create(this, R.raw.cumbia),
-            MediaPlayer.create(this, R.raw.foster)
-        )
+        fun inicializarMediaPLayer() {
+            mediaPlayerList = listOf(
+                MediaPlayer.create(this, R.raw.creep),
+                MediaPlayer.create(this, R.raw.cumbia),
+                MediaPlayer.create(this, R.raw.foster)
+            )
+        }
+
+        inicializarMediaPLayer()
 
         fun actualizarInterfaz() {
             val (imagen, titulo) = when (posicion) {
@@ -71,12 +75,13 @@ class MainActivity : AppCompatActivity() {
         btn_stop.setOnClickListener() {
             mediaPlayerList[posicion].stop()
             posicion = 0
+            inicializarMediaPLayer()
             actualizarInterfaz()
             play_pause.setImageResource(R.drawable.boton_de_play)
             Toast.makeText(this, "   Stop", Toast.LENGTH_SHORT).show()
         }
 
-        // Metodo para el boton REPETIR
+        // Método para el boton REPETIR
         btn_repetir.setOnClickListener() {
             if (repetir) {
                 btn_repetir.setImageResource(R.drawable.repetir)
@@ -91,10 +96,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
-
-        // Metodo para el boton SIGUIENTE
+        // Método para el boton SIGUIENTE
         btn_siguiente.setOnClickListener() {
             if (posicion < mediaPlayerList.size - 1) {
                 mediaPlayerList[posicion].stop();
@@ -106,6 +108,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Método para el boton ANTERIOR
         btn_anterior.setOnClickListener() {
             if (posicion >= 1) {
                 mediaPlayerList[posicion].stop();
