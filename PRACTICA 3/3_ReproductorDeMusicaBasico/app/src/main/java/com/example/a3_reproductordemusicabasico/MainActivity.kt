@@ -23,17 +23,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         var posicion = 0
         var repetir = 0
 
-        val iv = findViewById<ImageView>(R.id.imageView)
+        val imgFront = findViewById<ImageView>(R.id.imageView)
+        val txt_titulo = findViewById<TextView>(R.id.txt_titulo)
+
         val play_pause = findViewById<ImageButton>(R.id.btn_play)
         val btn_repetir = findViewById<ImageButton>(R.id.btn_repetir)
         val btn_stop = findViewById<ImageButton>(R.id.btn_detener)
         val btn_anterior = findViewById<ImageButton>(R.id.btn_anterior)
         val btn_siguiente = findViewById<ImageButton>(R.id.btn_siguiente)
-        val txt_titulo = findViewById<TextView>(R.id.txt_titulo)
 
+        // Creamos la lista de reporduccion
         mediaPlayerList = listOf(
             MediaPlayer.create(this, R.raw.creep),
             MediaPlayer.create(this, R.raw.cumbia),
@@ -42,10 +45,10 @@ class MainActivity : AppCompatActivity() {
 
         // Método para el boton PLAY & PAUSE
         play_pause.setOnClickListener() {
-            if (mediaPlayerList[posicion].isPlaying()) {
+            if (mediaPlayerList[posicion].isPlaying) {
                 mediaPlayerList[posicion].pause()
                 play_pause.setImageResource(R.drawable.boton_de_play)
-                Toast.makeText(this, " Pausa", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, " Pause", Toast.LENGTH_SHORT).show()
             } else {
                 mediaPlayerList[posicion].start()
                 play_pause.setImageResource(R.drawable.boton_de_pausa)
@@ -63,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             )
             posicion = 0
             play_pause.setImageResource(R.drawable.boton_de_play)
-            iv.setImageResource(R.drawable.creep_port)
+            imgFront.setImageResource(R.drawable.creep_port)
             txt_titulo.setText(R.string.txt_creep)
             Toast.makeText(this, "   Stop", Toast.LENGTH_SHORT).show()
         }
@@ -92,14 +95,14 @@ class MainActivity : AppCompatActivity() {
                     posicion ++
                 }
                 when(posicion) {
-                    0 -> {iv.setImageResource(R.drawable.creep_port)
+                    0 -> {imgFront.setImageResource(R.drawable.creep_port)
                         txt_titulo.setText(R.string.txt_creep)
                     }
-                    1 -> {iv.setImageResource(R.drawable.cumbia_port)
+                    1 -> {imgFront.setImageResource(R.drawable.cumbia_port)
                         txt_titulo.setText(R.string.txt_cumbia)
                     }
                     else -> {
-                        iv.setImageResource(R.drawable.foster_port)
+                        imgFront.setImageResource(R.drawable.foster_port)
                         txt_titulo.setText(R.string.txt_foster)
                     }
                 }
@@ -123,14 +126,14 @@ class MainActivity : AppCompatActivity() {
                     posicion --
                 }
                 when(posicion) {
-                    0 -> {iv.setImageResource(R.drawable.creep_port)
+                    0 -> {imgFront.setImageResource(R.drawable.creep_port)
                         txt_titulo.setText(R.string.txt_creep)
                     }
-                    1 -> {iv.setImageResource(R.drawable.cumbia_port)
+                    1 -> {imgFront.setImageResource(R.drawable.cumbia_port)
                         txt_titulo.setText(R.string.txt_cumbia)
                     }
                     else -> {
-                        iv.setImageResource(R.drawable.foster_port)
+                        imgFront.setImageResource(R.drawable.foster_port)
                         txt_titulo.setText(R.string.txt_foster)
                     }
                 }
