@@ -43,6 +43,17 @@ class MainActivity : AppCompatActivity() {
             MediaPlayer.create(this, R.raw.foster)
         )
 
+        fun actualizarInterfaz() {
+            val (imagen, titulo) = when (posicion) {
+                0 -> Pair(R.drawable.creep_port, R.string.txt_creep)
+                1 -> Pair(R.drawable.cumbia_port, R.string.txt_cumbia)
+                else -> Pair(R.drawable.foster_port, R.string.txt_foster)
+            }
+            imgFront.setImageResource(imagen)
+            txt_titulo.setText(titulo)
+            play_pause.setImageResource(R.drawable.boton_de_pausa)
+        }
+
         // Método para el boton PLAY & PAUSE
         play_pause.setOnClickListener() {
             if (mediaPlayerList[posicion].isPlaying) {
@@ -59,11 +70,9 @@ class MainActivity : AppCompatActivity() {
         // Método para el boton DETENER
         btn_stop.setOnClickListener() {
             mediaPlayerList[posicion].stop()
-            mediaPlayerList[0].prepare()
             posicion = 0
+            actualizarInterfaz()
             play_pause.setImageResource(R.drawable.boton_de_play)
-            imgFront.setImageResource(R.drawable.creep_port)
-            txt_titulo.setText(R.string.txt_creep)
             Toast.makeText(this, "   Stop", Toast.LENGTH_SHORT).show()
         }
 
@@ -82,28 +91,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Metodo para el boton SIGUEINTE
+
+
+
+        // Metodo para el boton SIGUIENTE
         btn_siguiente.setOnClickListener() {
             if (posicion < mediaPlayerList.size - 1) {
-                if (mediaPlayerList[posicion].isPlaying()) {
-                    mediaPlayerList[posicion].stop();
-                    posicion++
-                    mediaPlayerList[posicion].start()
-                } else {
-                    posicion ++
-                }
-                when(posicion) {
-                    0 -> {imgFront.setImageResource(R.drawable.creep_port)
-                        txt_titulo.setText(R.string.txt_creep)
-                    }
-                    1 -> {imgFront.setImageResource(R.drawable.cumbia_port)
-                        txt_titulo.setText(R.string.txt_cumbia)
-                    }
-                    else -> {
-                        imgFront.setImageResource(R.drawable.foster_port)
-                        txt_titulo.setText(R.string.txt_foster)
-                    }
-                }
+                mediaPlayerList[posicion].stop();
+                posicion++
+                mediaPlayerList[posicion].start()
+                actualizarInterfaz()
             } else {
                 Toast.makeText(this, "No hay mas canciones", Toast.LENGTH_SHORT).show()
             }
@@ -111,30 +108,13 @@ class MainActivity : AppCompatActivity() {
 
         btn_anterior.setOnClickListener() {
             if (posicion >= 1) {
-                if (mediaPlayerList[posicion].isPlaying()) {
-                    mediaPlayerList[posicion].stop();
-                    mediaPlayerList = listOf(
-                        MediaPlayer.create(this, R.raw.creep),
-                        MediaPlayer.create(this, R.raw.cumbia),
-                        MediaPlayer.create(this, R.raw.foster)
-                    )
-                    posicion--
-                    mediaPlayerList[posicion].start()
-                } else {
-                    posicion --
-                }
-                when(posicion) {
-                    0 -> {imgFront.setImageResource(R.drawable.creep_port)
-                        txt_titulo.setText(R.string.txt_creep)
-                    }
-                    1 -> {imgFront.setImageResource(R.drawable.cumbia_port)
-                        txt_titulo.setText(R.string.txt_cumbia)
-                    }
-                    else -> {
-                        imgFront.setImageResource(R.drawable.foster_port)
-                        txt_titulo.setText(R.string.txt_foster)
-                    }
-                }
+                mediaPlayerList[posicion].stop();
+                mediaPlayerList[posicion].prepareAsync();
+                posicion--
+                mediaPlayerList[posicion].prepare()
+                mediaPlayerList[posicion].start()
+                actualizarInterfaz()
+
             } else {
                 Toast.makeText(this, "No hay mas canciones", Toast.LENGTH_SHORT).show()
             }
