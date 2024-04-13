@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var txtInput: TextView
     private lateinit var txtOutput: TextView
+    private lateinit var btnEqual: Button
 
     private var exp1 = 0.0
     private var exp2 = 0.0
@@ -32,7 +33,9 @@ class MainActivity : AppCompatActivity() {
 
         txtInput = findViewById(R.id.txt_input)
         txtOutput = findViewById(R.id.txt_output)
+        btnEqual = findViewById(R.id.btn_equal)
 
+        btnEqual.isEnabled = false
         setButtonsEnabled(false)
     }
 
@@ -47,22 +50,23 @@ class MainActivity : AppCompatActivity() {
     // Agregar más digitos a la expresión actual
     private fun appendExp(digit: String) {
         if (isNewExp) exp2String += digit
+        if (!exp2String.isEmpty()) btnEqual.isEnabled = true // Aaeguramos que exp2 tenga digitos.
         if (!txtOutput.text.isNullOrEmpty()) { // Para restaurar valores y limpiar la interfaz.
             txtInput.text = ""
             txtOutput.text = ""
-            exp2String = ""
             setButtonsEnabled(true)
         }
+        if (txtInput.text.isNullOrEmpty()) setButtonsEnabled(true)
         txtInput.append(digit)
-        setButtonsEnabled(true)
     }
 
     // Se hace el cambio de expresión, o sea de la exp1 a exp2(para almacenar exp2).
     private fun setOper(operator: String) {
         this.operator = operator
         isNewExp = true
-        exp1 = txtInput.text.toString().toDouble()
+        exp1 = txtInput.text.toString().toDouble() // Expresion 1 ya tiene valor
         txtInput.append(this.operator)
+        setButtonsEnabled(false) // Para evitar errores.
     }
 
     // Dependiendo del operador se realiza la operacion correspondiente.
@@ -70,7 +74,8 @@ class MainActivity : AppCompatActivity() {
         exp2 = exp2String.toDouble()
         isNewExp = false
 
-        setButtonsEnabled(false) // Para evitar errores.
+        exp2String = ""
+        btnEqual.isEnabled = false
 
         return when(operator) {
             "+" -> exp1 + exp2
@@ -81,14 +86,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setButtonsEnabled(enabled: Boolean) {
-        val btnEqual = findViewById<Button>(R.id.btn_equal)
         val btnAdd = findViewById<Button>(R.id.btn_sum)
         val btnSub = findViewById<Button>(R.id.btn_res)
         val btnMul = findViewById<Button>(R.id.btn_mul)
         val btnDiv = findViewById<Button>(R.id.btn_div)
         val btnZero = findViewById<Button>(R.id.btn_0)
 
-        btnEqual.isEnabled = enabled
         btnAdd.isEnabled = enabled
         btnSub.isEnabled = enabled
         btnMul.isEnabled = enabled
