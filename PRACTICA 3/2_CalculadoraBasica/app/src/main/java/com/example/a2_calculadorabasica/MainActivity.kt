@@ -90,13 +90,11 @@ class MainActivity : AppCompatActivity() {
         val btnSub = findViewById<Button>(R.id.btn_res)
         val btnMul = findViewById<Button>(R.id.btn_mul)
         val btnDiv = findViewById<Button>(R.id.btn_div)
-        val btnZero = findViewById<Button>(R.id.btn_0)
 
         btnAdd.isEnabled = enabled
         btnSub.isEnabled = enabled
         btnMul.isEnabled = enabled
         btnDiv.isEnabled = enabled
-        btnZero.isEnabled = enabled
     }
 
 }
