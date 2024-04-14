@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
  * se muestre en pantalla un mensaje personalizado usando Toast.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 09/04/24
- * @lastModification 09/04/24
+ * @lastModification 13/04/24
  */
 
 class MainActivity : AppCompatActivity() {
