@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="30dp"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:gravity="center"
+    android:padding="30dp"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/txt_custom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
         android:gravity="center"
         android:hint="@string/txt_custom"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textSize="20sp" />
 
     <ImageButton
         android:id="@+id/imgb_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:layout_marginTop="80dp"
         android:gravity="center"
+        android:padding="20dp"
         android:src="@drawable/img_toca_aqui" />
 
 </LinearLayout>
