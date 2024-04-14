@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * @problemDescription Se solicita, implementar un boton que contenga una imagen y al presionar esta
- * se muestre en pantalla un mensaje personalizado usando Toast.
+ * @problemDescription Se solicita, mostrar una imagen, al presionar la imagen: se muestre
+ * en pantalla un mensaje personalizado usando Toast, el mensaje se saca de un EditText.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 09/04/24
  * @lastModification 13/04/24
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val txtCustom = findViewById<EditText>(R.id.txt_custom)
         val imgBPicture = findViewById<ImageButton>(R.id.imgb_main)
-        imgBPicture.setOnClickListener() {
+        imgBPicture.setOnClickListener {
             val msg = txtCustom.text
             if (msg.isNotEmpty()) {
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
