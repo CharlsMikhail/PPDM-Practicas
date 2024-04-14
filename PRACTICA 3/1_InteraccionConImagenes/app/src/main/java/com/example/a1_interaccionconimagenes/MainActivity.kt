@@ -18,11 +18,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val txt_custom = findViewById<EditText>(R.id.txt_custom)
-        val btn_imgb = findViewById<ImageButton>(R.id.imgb_main)
-        btn_imgb.setOnClickListener() {
-            //val msg = "Acabas de hacer click en la imagen :)"
-            Toast.makeText(this, txt_custom.text, Toast.LENGTH_SHORT).show()
+        val txtCustom = findViewById<EditText>(R.id.txt_custom)
+        val imgBPicture = findViewById<ImageButton>(R.id.imgb_main)
+        imgBPicture.setOnClickListener() {
+            val msg = txtCustom.text
+            if (msg.isNotEmpty()) {
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Acabas de darle click a la imagen", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
