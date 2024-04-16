@@ -7,11 +7,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * @problemDescription Se solicita, mostrar una imagen, al presionar la imagen: se muestre
+ * @problemDescription PC3 - Se solicita, mostrar una imagen, al presionar la imagen: se muestre
  * en pantalla un mensaje personalizado usando Toast, el mensaje se saca de un EditText.
+ * @problemDescription PC4 - Se solicita, agregar un Spinner para poder seleccionar más imagenes
+ * , implentar otra actividad; ambas no tienen que perder información de una a la otra, estas
+ * actividades se comunican con botones, "siguiente" y "volver".
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 09/04/24
- * @lastModification 13/04/24
+ * @lastModification 16/04/24
  */
 
 class MainActivity : AppCompatActivity() {
