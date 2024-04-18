@@ -30,7 +30,7 @@
         android:textSize="20sp" />
 
     <Spinner
-        android:id="@+id/spn_imagenes"
+        android:id="@+id/spn_images"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"/>
