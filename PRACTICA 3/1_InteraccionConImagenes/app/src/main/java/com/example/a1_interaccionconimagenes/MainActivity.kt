@@ -1,7 +1,9 @@
 package com.example.a1_interaccionconimagenes
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -20,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity
  * @lastModification 16/04/24
  */
 
+val REQUEST_CODE = "911"
+
 class MainActivity : AppCompatActivity() {
 
     val KEY_TEXT = "text"
@@ -32,22 +36,33 @@ class MainActivity : AppCompatActivity() {
         val btnSelect = findViewById<Button>(R.id.btn_select)
 
         val opciones = listOf("Imagen1", "Imagen2", "Imagen3")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
+        spnImages.adapter = adapter
 
         // Preparamos el cambio de actividad
         val msg = txtCustom.text
 
 
         val intent = Intent(this, MainActivity2::class.java)
-
-
-
         intent.putExtra(KEY_TEXT, msg)
+        // Falta la informacion del spinner
 
 
         btnSelect.setOnClickListener {
-
+            startActivityForResult(intent, REQUEST_CODE)
         }
 
 
+    }
+}
+
+// Forma antigua
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if(requestCode == REQUEST_CODE ) {
+        if (resultCode == Activity.RESULT_OK) {
+            val res = data?.getIntExtra("clave", 0).toString()
+            Toast.makeText(this, res, Toast.LENGTH_LONG).show()
+        }
     }
 }
