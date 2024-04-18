@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CRAM-InteraccionConImagenes</string>
     <string name="txt_custom">Escriba un mensaje personalizado</string>
+    <string name="btn_select">Seleccionar</string>
 </resources>
