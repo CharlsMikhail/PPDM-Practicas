@@ -110,10 +110,14 @@ class MainActivity2 : AppCompatActivity() {
         // Método para el boton ANTERIOR
         btnAnterior.setOnClickListener {
             if (posicion >= 1) {
+
                 mediaPlayerList[posicion].stop()
                 mediaPlayerList[posicion].prepareAsync()
                 posicion--
-                mediaPlayerList[posicion].prepare()
+                try {
+                    mediaPlayerList[posicion].prepare()
+                }
+                catch (_:Exception) {}
                 mediaPlayerList[posicion].start()
                 actualizarInterfaz()
 
