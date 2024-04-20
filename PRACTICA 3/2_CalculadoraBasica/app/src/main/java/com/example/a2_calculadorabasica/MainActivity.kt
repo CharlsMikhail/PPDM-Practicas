@@ -7,11 +7,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * @problemDescription Se solicita, crear una calculadora básica, que sume, reste, multplique
+ * @problemDescription PC3 - Se solicita, crear una calculadora básica, que sume, reste, multplique
  * y divida; la interacción se muestre en un TextView.
+ * @problemDescription PC4 - Se solicita, agregar funcionalidad para que al voltear horizontalmente
+ * el dispositivo no se pierda la inforamación.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 09/04/24
- * @lastModification 13/04/24
+ * @lastModification 20/04/24
  */
 
 class MainActivity : AppCompatActivity() {
