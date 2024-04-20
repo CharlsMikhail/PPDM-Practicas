@@ -49,11 +49,33 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(KEY_TEXT, msg)
             intent.putExtra(KEY_IMG, selected)
 
+            // FUNCIONA PARA API 32 A MÁS (ANDROID 11 A MÁS)
+            // No se probó, ya qué el telefono que tengo es android 10 y no tiene soporte.
+            // No me queda almacenamiento para instalar un emulador, espero pronto pueda comprar más
+            // memoria.
+
+            /*val contrato = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    // Recuperamos el texto escrito anteriormente
+                    val recoverdText = data?.getStringExtra(KEY_TEXT)
+                    val editText = findViewById<EditText>(R.id.txt_custom)
+                    editText.setText(recoverdText)
+
+                    val recoveredImg = data?.getIntExtra(KEY_IMG, 0).toString().toInt()
+                    val spnImage = findViewById<Spinner>(R.id.spn_images)
+                    spnImage.setSelection(recoveredImg)
+                }
+            }
+
+            startActivity(intent)
+
+            contrato.launch(intent) */
+
             startActivityForResult(intent, REQUEST_CODE)
         }
 
     }
-
 
     // Forma antigua
     @Deprecated("Deprecated in Java")
