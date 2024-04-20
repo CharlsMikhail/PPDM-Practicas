@@ -1,6 +1,8 @@
 package com.example.a2_calculadorabasica
 
+import android.app.Activity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -15,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity
  * @creationDate 09/04/24
  * @lastModification 20/04/24
  */
+
+private const val KEY_INPUT = "in"
+private const val KEY_OUTPUT = "out"
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +40,15 @@ class MainActivity : AppCompatActivity() {
         txtInput = findViewById(R.id.txt_input)
         txtOutput = findViewById(R.id.txt_output)
         btnEqual = findViewById(R.id.btn_equal)
+
+        if (savedInstanceState != null) {
+            txtInput.text = savedInstanceState.getString(KEY_INPUT, "")
+            txtOutput.text = savedInstanceState.getString(KEY_OUTPUT, "")
+        }
+
+        if (resources.configuration.orientation == 2) {
+            txtOutput.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+        }
 
         btnEqual.isEnabled = false
         setButtonsEnabled(false)
@@ -97,6 +111,12 @@ class MainActivity : AppCompatActivity() {
         btnSub.isEnabled = enabled
         btnMul.isEnabled = enabled
         btnDiv.isEnabled = enabled
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(KEY_INPUT, txtInput.text.toString())
+        outState.putString(KEY_OUTPUT, txtOutput.text.toString())
+        super.onSaveInstanceState(outState)
     }
 
 }

@@ -25,10 +25,10 @@
         style="@style/TextEstilo"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:maxLength="15"
         android:layout_below="@id/txt_input"
         android:layout_marginTop="40dp"
         android:hint="@string/btn_equal"
+        android:maxLength="15"
         android:paddingBottom="30dp" />
 
 
