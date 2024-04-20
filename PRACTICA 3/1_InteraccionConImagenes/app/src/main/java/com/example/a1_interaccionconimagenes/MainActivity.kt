@@ -22,30 +22,32 @@ import androidx.appcompat.app.AppCompatActivity
  * @lastModification 16/04/24
  */
 
-val REQUEST_CODE = "911"
+const val REQUEST_CODE = 123
+private const val KEY_TEXT = "text"
+private const val KEY_IMG = "image"
 
 class MainActivity : AppCompatActivity() {
-
-    val KEY_TEXT = "text"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val txtCustom = findViewById<EditText>(R.id.txt_custom)
         val spnImages = findViewById<Spinner>(R.id.spn_images)
         val btnSelect = findViewById<Button>(R.id.btn_select)
 
         val opciones = listOf("Imagen1", "Imagen2", "Imagen3")
+
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
         spnImages.adapter = adapter
 
         // Preparamos el cambio de actividad
-        val msg = txtCustom.text
+        val msg = txtCustom.text.toString()
+        val selected = spnImages.selectedItem.toString()
 
-
+        // Creamos el intent() para guardar y despúes recueprar en la otra actividad
         val intent = Intent(this, MainActivity2::class.java)
         intent.putExtra(KEY_TEXT, msg)
-        // Falta la informacion del spinner
+        intent.putExtra(KEY_IMG, selected)
 
 
         btnSelect.setOnClickListener {
@@ -54,15 +56,22 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-}
 
-// Forma antigua
-override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-    if(requestCode == REQUEST_CODE ) {
-        if (resultCode == Activity.RESULT_OK) {
-            val res = data?.getIntExtra("clave", 0).toString()
-            Toast.makeText(this, res, Toast.LENGTH_LONG).show()
+
+
+
+    // Forma antigua
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_CODE ) {
+            if (resultCode == Activity.RESULT_OK) {
+                val res = data?.getIntExtra(KEY_INT, 0).toString()
+                Toast.makeText(this, res, Toast.LENGTH_LONG).show()
+            }
         }
     }
 }
+
+
+
