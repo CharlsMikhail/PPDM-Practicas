@@ -9,11 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * @problemDescription Se solicita, crear un reproductor de musica básico que contenga:
+ * @problemDescription PC3 - Se solicita, crear un reproductor de musica básico que contenga:
  * reproducir, pausar y detener musica.
+ * @problemDescription PC4 - Se solicita, agregar una "Actividad" de menú antes de reproducir una musica.
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 09/04/24
- * @lastModification 13/04/24
+ * @lastModification 20/04/24
  */
 
 class MainActivity : AppCompatActivity() {
