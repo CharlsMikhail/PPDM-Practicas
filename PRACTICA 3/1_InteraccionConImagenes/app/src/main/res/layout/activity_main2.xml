@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:paddingTop="20dp"
     tools:context=".MainActivity2">
 
     <TextView
@@ -21,17 +21,16 @@
 
     <ImageButton
         android:id="@+id/imgb_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_width="236dp"
+        android:layout_height="236dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:padding="20dp"
         android:src="@drawable/img_toca_aqui" />
 
     <Button
         android:id="@+id/btn_return"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/btn_return"/>
 </LinearLayout>
