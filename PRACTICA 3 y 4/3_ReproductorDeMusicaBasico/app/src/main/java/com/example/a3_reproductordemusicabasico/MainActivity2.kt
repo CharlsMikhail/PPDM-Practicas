@@ -22,7 +22,7 @@ class MainActivity2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main2)
 
         var posicion = 0
         var repetir = false
@@ -41,7 +41,9 @@ class MainActivity2 : AppCompatActivity() {
             mediaPlayerList = listOf(
                 MediaPlayer.create(this, R.raw.creep),
                 MediaPlayer.create(this, R.raw.cumbia),
-                MediaPlayer.create(this, R.raw.foster)
+                MediaPlayer.create(this, R.raw.foster),
+                MediaPlayer.create(this, R.raw.head),
+                MediaPlayer.create(this, R.raw.paredon)
             )
         }
 
@@ -51,6 +53,8 @@ class MainActivity2 : AppCompatActivity() {
             val (imagen, titulo) = when (posicion) {
                 0 -> Pair(R.drawable.creep_port, R.string.txt_creep)
                 1 -> Pair(R.drawable.cumbia_port, R.string.txt_cumbia)
+                2 -> Pair(R.drawable.foster_port, R.string.txt_foster)
+                3 -> Pair(R.drawable.foster_port, R.string.txt)
                 else -> Pair(R.drawable.foster_port, R.string.txt_foster)
             }
             imgFront.setImageResource(imagen)
