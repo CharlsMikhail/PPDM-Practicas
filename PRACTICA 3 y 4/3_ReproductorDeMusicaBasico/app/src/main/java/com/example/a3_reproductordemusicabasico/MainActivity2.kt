@@ -24,7 +24,10 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        var posicion = 0
+        // Recuperamos la informacion de la actividad 1
+        val option = intent.getIntExtra(KEY_SELECT, 0)
+
+        var posicion = option
         var repetir = false
 
         val imgFront = findViewById<ImageView>(R.id.imageView)
@@ -36,17 +39,6 @@ class MainActivity2 : AppCompatActivity() {
         val btnAnterior = findViewById<ImageButton>(R.id.btn_anterior)
         val btnSiguiente = findViewById<ImageButton>(R.id.btn_siguiente)
 
-        // Creamos la lista de reproducción
-        fun inicializarMediaPLayer() {
-            mediaPlayerList = listOf(
-                MediaPlayer.create(this, R.raw.creep),
-                MediaPlayer.create(this, R.raw.cumbia),
-                MediaPlayer.create(this, R.raw.foster),
-                MediaPlayer.create(this, R.raw.head),
-                MediaPlayer.create(this, R.raw.paredon)
-            )
-        }
-
         inicializarMediaPLayer() // Inicializamos por primera vez la lista de reproducción.
 
         fun actualizarInterfaz() {
@@ -54,8 +46,8 @@ class MainActivity2 : AppCompatActivity() {
                 0 -> Pair(R.drawable.creep_port, R.string.txt_creep)
                 1 -> Pair(R.drawable.cumbia_port, R.string.txt_cumbia)
                 2 -> Pair(R.drawable.foster_port, R.string.txt_foster)
-                3 -> Pair(R.drawable.foster_port, R.string.txt)
-                else -> Pair(R.drawable.foster_port, R.string.txt_foster)
+                3 -> Pair(R.drawable.head_port, R.string.txt_head)
+                else -> Pair(R.drawable.paredon_port, R.string.txt_paredon)
             }
             imgFront.setImageResource(imagen)
             txtTitulo.setText(titulo)
@@ -127,6 +119,17 @@ class MainActivity2 : AppCompatActivity() {
             }
         }
 
+    }
+
+    // Creamos la lista de reproducción
+    private fun inicializarMediaPLayer() {
+        mediaPlayerList = listOf(
+            MediaPlayer.create(this, R.raw.creep),
+            MediaPlayer.create(this, R.raw.cumbia),
+            MediaPlayer.create(this, R.raw.foster),
+            MediaPlayer.create(this, R.raw.head),
+            MediaPlayer.create(this, R.raw.paredon)
+        )
     }
 
 }

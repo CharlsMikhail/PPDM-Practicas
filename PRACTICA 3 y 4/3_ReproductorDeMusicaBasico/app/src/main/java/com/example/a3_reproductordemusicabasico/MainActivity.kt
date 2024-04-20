@@ -1,15 +1,10 @@
 package com.example.a3_reproductordemusicabasico
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 /**
@@ -21,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity
  * @lastModification 20/04/24
  */
 
-const val REQUEST_CODE = 123
 const val KEY_SELECT = "select"
 
 class MainActivity : AppCompatActivity() {
@@ -34,12 +28,9 @@ class MainActivity : AppCompatActivity() {
         val btnSelect = findViewById<Button>(R.id.btn_select)
 
         // Configuramos el sipinner con la lista de músicas
-        val options = listOf("1. Creep", "2. Cumbia Boliviana", "3. Pumped Up Kicks", "4. In My Head", "5. Paredón" )
+        val options = listOf("1. Creep", "2. Cumbia Boliviana", "3. Pumped Up Kicks", "4. In My Head", "5. Paredon" )
         val adapter = ArrayAdapter(this, R.layout.spinner_item_custom, options)
         spnMusic.adapter = adapter
-
-
-
 
         btnSelect.setOnClickListener {
             // Preparamos el cambio de actividad
