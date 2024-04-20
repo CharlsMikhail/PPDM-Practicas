@@ -55,8 +55,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
     // Forma antigua
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -68,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 val editText = findViewById<EditText>(R.id.txt_custom)
                 editText.setText(recoverdText)
 
-                val recoveredImg = data?.getIntExtra(KEY_IMG, 1).toString().toInt()
+                val recoveredImg = data?.getIntExtra(KEY_IMG, 0).toString().toInt()
                 val spnImage = findViewById<Spinner>(R.id.spn_images)
                 spnImage.setSelection(recoveredImg)
 
