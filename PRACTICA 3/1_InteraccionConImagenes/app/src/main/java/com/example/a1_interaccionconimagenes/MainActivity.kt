@@ -23,8 +23,8 @@ import androidx.appcompat.app.AppCompatActivity
  */
 
 const val REQUEST_CODE = 123
-private const val KEY_TEXT = "text"
-private const val KEY_IMG = "image"
+const val KEY_TEXT = "text"
+const val KEY_IMG = "image"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,20 +40,18 @@ class MainActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
         spnImages.adapter = adapter
 
-        // Preparamos el cambio de actividad
-        val msg = txtCustom.text.toString()
-        val selected = spnImages.selectedItem.toString()
-
-        // Creamos el intent() para guardar y despúes recueprar en la otra actividad
-        val intent = Intent(this, MainActivity2::class.java)
-        intent.putExtra(KEY_TEXT, msg)
-        intent.putExtra(KEY_IMG, selected)
-
-
         btnSelect.setOnClickListener {
+            // Preparamos el cambio de actividad
+            val msg = txtCustom.text.toString()
+            val selected = spnImages.selectedItem.toString()
+
+            // Creamos el intent() para guardar y despúes recueprar en la otra actividad
+            val intent = Intent(this, MainActivity2::class.java)
+            intent.putExtra(KEY_TEXT, msg)
+            intent.putExtra(KEY_IMG, selected)
+
             startActivityForResult(intent, REQUEST_CODE)
         }
-
 
     }
 
