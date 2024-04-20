@@ -1,5 +1,6 @@
 package com.example.a3_reproductordemusicabasico
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.ImageButton
@@ -39,8 +40,6 @@ class MainActivity2 : AppCompatActivity() {
         val btnAnterior = findViewById<ImageButton>(R.id.btn_anterior)
         val btnSiguiente = findViewById<ImageButton>(R.id.btn_siguiente)
 
-        inicializarMediaPLayer() // Inicializamos por primera vez la lista de reproducción.
-
         fun actualizarInterfaz() {
             val (imagen, titulo) = when (posicion) {
                 0 -> Pair(R.drawable.creep_port, R.string.txt_creep)
@@ -53,6 +52,10 @@ class MainActivity2 : AppCompatActivity() {
             txtTitulo.setText(titulo)
             playPause.setImageResource(R.drawable.boton_de_pausa)
         }
+
+        inicializarMediaPLayer() // Inicializamos por primera vez la lista de reproducción.
+        actualizarInterfaz() // Actualizamos la interfaz por primera vez
+        playPause.setImageResource(R.drawable.boton_de_play)
 
         // Método para el boton PLAY & PAUSE
         playPause.setOnClickListener {
@@ -131,5 +134,4 @@ class MainActivity2 : AppCompatActivity() {
             MediaPlayer.create(this, R.raw.paredon)
         )
     }
-
 }
