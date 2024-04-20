@@ -1,8 +1,8 @@
 package com.example.a3_reproductordemusicabasico
 
-import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -110,14 +110,10 @@ class MainActivity2 : AppCompatActivity() {
         // Método para el boton ANTERIOR
         btnAnterior.setOnClickListener {
             if (posicion >= 1) {
-
                 mediaPlayerList[posicion].stop()
                 mediaPlayerList[posicion].prepareAsync()
                 posicion--
-                try {
-                    mediaPlayerList[posicion].prepare()
-                }
-                catch (_:Exception) {}
+                try { mediaPlayerList[posicion].prepare() } catch (_:Exception) {}
                 mediaPlayerList[posicion].start()
                 actualizarInterfaz()
 
@@ -137,5 +133,15 @@ class MainActivity2 : AppCompatActivity() {
             MediaPlayer.create(this, R.raw.head),
             MediaPlayer.create(this, R.raw.paredon)
         )
+    }
+
+    // Para que el sonido tambien se destruya.
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayerList.forEach { mediaPlayer ->
+            mediaPlayer.stop()
+            mediaPlayer.release()
+        }
+        //Log.d("CicloVida2", "Método destroy")
     }
 }
