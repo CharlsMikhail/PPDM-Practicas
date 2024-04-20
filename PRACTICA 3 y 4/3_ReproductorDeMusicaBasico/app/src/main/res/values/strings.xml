@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">CRAM-ReproductorDeMúsica</string>
+    <string name="txt_select">Seleccionar</string>
     <string name="txt_creep">Creep(Acoustic)-RadioHead</string>
     <string name="txt_cumbia">La Cumbia Boliviana-Bonny Lovy</string>
     <string name="txt_foster">Pumped Up Kicks-FosterThePeople</string>
