@@ -35,15 +35,14 @@ class MainActivity : AppCompatActivity() {
         val spnImages = findViewById<Spinner>(R.id.spn_images)
         val btnSelect = findViewById<Button>(R.id.btn_select)
 
-        val opciones = listOf("Imagen1", "Imagen2", "Imagen3")
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
+        val options = listOf("imagen1", "imagen2", "imagen3")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
         spnImages.adapter = adapter
 
         btnSelect.setOnClickListener {
             // Preparamos el cambio de actividad
             val msg = txtCustom.text.toString()
-            val selected = spnImages.selectedItem.toString()
+            val selected = spnImages.selectedItemPosition
 
             // Creamos el intent() para guardar y despúes recueprar en la otra actividad
             val intent = Intent(this, MainActivity2::class.java)
@@ -64,8 +63,16 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == REQUEST_CODE ) {
             if (resultCode == Activity.RESULT_OK) {
-                val res = data?.getIntExtra(KEY_INT, 0).toString()
-                Toast.makeText(this, res, Toast.LENGTH_LONG).show()
+                // Recuperamos el texto escrito anteriormente
+                val recoverdText = data?.getStringExtra(KEY_TEXT)
+                val editText = findViewById<EditText>(R.id.txt_custom)
+                editText.setText(recoverdText)
+
+                val recoveredImg = data?.getIntExtra(KEY_IMG, 1).toString().toInt()
+                val spnImage = findViewById<Spinner>(R.id.spn_images)
+                spnImage.setSelection(recoveredImg)
+
+                Toast.makeText(this, "Volvimos", Toast.LENGTH_LONG).show()
             }
         }
     }

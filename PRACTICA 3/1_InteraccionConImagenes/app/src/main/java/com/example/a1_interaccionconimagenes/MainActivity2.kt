@@ -17,15 +17,15 @@ class MainActivity2 : AppCompatActivity() {
 
         // Recupero las información de la actividad 1
         val mensaje = intent.getStringExtra(KEY_TEXT)
-        val imgSelected = intent.getStringExtra(KEY_IMG)
+        val imgSelected = intent.getIntExtra(KEY_IMG, 1)
 
         val imgMain = findViewById<ImageButton>(R.id.imgb_main)
 
         imgMain.setImageResource(
             when (imgSelected) {
-                "imagen1" -> R.drawable.imagen1
-                "imagen2" -> R.drawable.imagen2
-                "imagen3" -> R.drawable.imagen3
+                1 -> R.drawable.imagen1
+                2 -> R.drawable.imagen2
+                3 -> R.drawable.imagen3
                 else -> {TODO("EXCEPTIONS")}
             }
         )
