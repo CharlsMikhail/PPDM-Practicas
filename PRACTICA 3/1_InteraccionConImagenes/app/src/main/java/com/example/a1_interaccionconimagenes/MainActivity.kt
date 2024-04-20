@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
  * actividades se comunican con botones, "siguiente" y "volver".
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 09/04/24
- * @lastModification 16/04/24
+ * @lastModification 20/04/24
  */
 
 const val REQUEST_CODE = 123
@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
         val spnImages = findViewById<Spinner>(R.id.spn_images)
         val btnSelect = findViewById<Button>(R.id.btn_select)
 
-        val options = listOf("imagen1", "imagen2", "imagen3")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
+        val options = listOf("Corazon", "Retrato", "Goku")
+        val adapter = ArrayAdapter(this, R.layout.spinner_item_custom, options)
         spnImages.adapter = adapter
 
         btnSelect.setOnClickListener {

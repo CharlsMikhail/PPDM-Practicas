@@ -29,6 +29,17 @@
         android:inputType="text"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/text_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:text="@string/txt_select"
+        android:textAlignment="center"
+        android:textColor="#4411BB"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
     <Spinner
         android:id="@+id/spn_images"
         android:layout_width="match_parent"

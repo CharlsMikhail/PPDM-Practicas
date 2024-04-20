@@ -8,8 +8,6 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-
-
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +35,7 @@ class MainActivity2 : AppCompatActivity() {
         val btnBack = findViewById<Button>(R.id.btn_return)
 
         btnBack.setOnClickListener {
-            // Empaquetamos antes de volver, apra poder recuperar la información.
+            // Empaquetamos antes de volver, para posteriormente poder recuperar la información.
             val intent = Intent()
             intent.putExtra(KEY_TEXT, mensaje)
             intent.putExtra(KEY_IMG, imgSelected)
