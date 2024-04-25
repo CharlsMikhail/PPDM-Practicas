@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">1_InteraccionConImagenesV3</string>
+    <string name="app_name">CRAM-InteraccionConImagenesV3</string>
+    <string name="txt_custom">Escriba un mensaje personalizado</string>
+    <string name="txt_select">Seleccione una imagen</string>
+    <string name="btn_select">Seleccionar</string>
+    <string name="btn_return">Volver</string>
 </resources>
