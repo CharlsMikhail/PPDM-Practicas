@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 const val REQUEST_CODE = "123"
@@ -24,6 +25,14 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         val options = listOf("Corazon", "Retrato", "Goku")
         val adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_custom, options)
         spnImages.adapter = adapter
+
+
+        requireActivity().supportFragmentManager.setFragmentResultListener(REQUEST_CODE, this) {
+                requestKey, bundle ->
+            val result = bundle.getString(KEY_MSG)
+            Toast.makeText(requireContext(), result, Toast.LENGTH_LONG).show()
+        }
+
 
         btnSelect.setOnClickListener {
             // Preparamos el cambio de actividad
