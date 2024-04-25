@@ -8,8 +8,28 @@
     tools:context=".ImageFragment">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/app_name" />
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="#701616"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imgb_main"
+        android:layout_width="236dp"
+        android:layout_height="236dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:src="@drawable/img_toca_aqui" />
+
+    <Button
+        android:id="@+id/btn_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/btn_return" />
 
 </LinearLayout>
