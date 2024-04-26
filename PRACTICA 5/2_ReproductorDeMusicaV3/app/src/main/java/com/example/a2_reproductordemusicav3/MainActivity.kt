@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().apply {
             setReorderingAllowed(true)
-            add(R.id.fragmentDatos, MenuMusicFragment())
+            add(R.id.menuMusicFragment, MenuMusicFragment())
             commit()
         }
     }

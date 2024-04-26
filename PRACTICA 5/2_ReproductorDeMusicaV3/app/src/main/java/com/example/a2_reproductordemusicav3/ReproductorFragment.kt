@@ -135,4 +135,21 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
         //Log.d("CicloVida2", "Método destroy")
     }
 
+    companion object {
+
+        private const val MI_NOMBRE = "nombre"
+        private const val MI_EDAD = "edad"
+
+        // Fun para pasar información
+        fun newInstance(mscSelected: Int) = ReproductorFragment().apply {
+
+            // 1ra forma
+            val datos = Bundle()
+            datos.putInt(KEY_MSC, mscSelected)
+            arguments = datos
+
+            // 2da forma
+            //arguments.bundleOf(MI_NOMBRE to nombre, MI_EDAD to edad)
+        }
+    }
 }
