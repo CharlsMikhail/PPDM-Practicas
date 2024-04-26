@@ -1,5 +1,6 @@
 package com.example.a2_reproductordemusicav3
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -9,7 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 
 class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
-    private var mscSelected: Int? = 0
+    private lateinit var mediaPlayerList: List<MediaPlayer>
+
+    private var mscSelected: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mscSelected = requireArguments().getInt(KEY_MSC)
@@ -17,20 +20,18 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Recuperamos la informacion de la actividad 1
-        val option = intent.getIntExtra(KEY_SELECT, 0)
 
-        var posicion = option
+        var posicion = mscSelected
         var repetir = false
 
-        val imgFront = findViewById<ImageView>(R.id.imageView)
-        val txtTitulo = findViewById<TextView>(R.id.txt_titulo)
+        val imgFront = view.findViewById<ImageView>(R.id.imageView)
+        val txtTitulo = view.findViewById<TextView>(R.id.txt_titulo)
 
-        val playPause = findViewById<ImageButton>(R.id.btn_play)
-        val btnRepetir = findViewById<ImageButton>(R.id.btn_repetir)
-        val btnStop = findViewById<ImageButton>(R.id.btn_detener)
-        val btnAnterior = findViewById<ImageButton>(R.id.btn_anterior)
-        val btnSiguiente = findViewById<ImageButton>(R.id.btn_siguiente)
+        val playPause = view.findViewById<ImageButton>(R.id.btn_play)
+        val btnRepetir = view.findViewById<ImageButton>(R.id.btn_repetir)
+        val btnStop = view.findViewById<ImageButton>(R.id.btn_detener)
+        val btnAnterior = view.findViewById<ImageButton>(R.id.btn_anterior)
+        val btnSiguiente = view.findViewById<ImageButton>(R.id.btn_siguiente)
 
         fun actualizarInterfaz() {
             val (imagen, titulo) = when (posicion) {
@@ -54,11 +55,11 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
             if (mediaPlayerList[posicion].isPlaying) {
                 mediaPlayerList[posicion].pause()
                 playPause.setImageResource(R.drawable.boton_de_play)
-                Toast.makeText(this, " Pause", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), " Pause", Toast.LENGTH_SHORT).show()
             } else {
                 mediaPlayerList[posicion].start()
                 playPause.setImageResource(R.drawable.boton_de_pausa)
-                Toast.makeText(this, "   Play", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "   Play", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -69,19 +70,19 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
             inicializarMediaPLayer()
             actualizarInterfaz()
             playPause.setImageResource(R.drawable.boton_de_play)
-            Toast.makeText(this, "   Stop", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "   Stop", Toast.LENGTH_SHORT).show()
         }
 
         // Método para el boton REPETIR
         btnRepetir.setOnClickListener {
             if (repetir) {
                 btnRepetir.setImageResource(R.drawable.repetir)
-                Toast.makeText(this, "No repetir", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "No repetir", Toast.LENGTH_SHORT).show()
                 mediaPlayerList[posicion].isLooping = false
                 repetir = false
             } else {
                 btnRepetir.setImageResource(R.drawable.repetir2)
-                Toast.makeText(this, "Repetir", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Repetir", Toast.LENGTH_SHORT).show()
                 mediaPlayerList[posicion].isLooping = true
                 repetir = true
             }
@@ -95,7 +96,7 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
                 mediaPlayerList[posicion].start()
                 actualizarInterfaz()
             } else {
-                Toast.makeText(this, "No hay mas canciones", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "No hay mas canciones", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -110,17 +111,17 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
                 actualizarInterfaz()
 
             } else {
-                Toast.makeText(this, "No hay mas canciones", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "No hay mas canciones", Toast.LENGTH_SHORT).show()
             }
         }
     }
     private fun inicializarMediaPLayer() {
         mediaPlayerList = listOf(
-            MediaPlayer.create(this, R.raw.creep),
-            MediaPlayer.create(this, R.raw.cumbia),
-            MediaPlayer.create(this, R.raw.foster),
-            MediaPlayer.create(this, R.raw.head),
-            MediaPlayer.create(this, R.raw.paredon)
+            MediaPlayer.create(requireContext(), R.raw.creep),
+            MediaPlayer.create(requireContext(), R.raw.cumbia),
+            MediaPlayer.create(requireContext(), R.raw.foster),
+            MediaPlayer.create(requireContext(), R.raw.head),
+            MediaPlayer.create(requireContext(), R.raw.paredon)
         )
     }
 
