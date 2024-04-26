@@ -7,4 +7,6 @@
     <string name="txt_foster">Pumped Up Kicks-FosterThePeople</string>
     <string name="txt_head">In My Head-Bedroom</string>
     <string name="txt_paredon">Paredón-Ozcar Horna</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
