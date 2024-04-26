@@ -19,7 +19,6 @@ class ImageFragment : Fragment(R.layout.fragment_image) {
         super.onCreate(savedInstanceState)
         mensaje = requireArguments().getString(KEY_TEXT)
         imgSelected = requireArguments().getInt(KEY_IMG)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
