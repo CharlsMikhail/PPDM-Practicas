@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 
 class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
     private lateinit var mediaPlayerList: List<MediaPlayer>
@@ -55,11 +56,11 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
             if (mediaPlayerList[posicion].isPlaying) {
                 mediaPlayerList[posicion].pause()
                 playPause.setImageResource(R.drawable.boton_de_play)
-                Toast.makeText(requireContext(), " Pause", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.txt_play), Toast.LENGTH_SHORT).show()
             } else {
                 mediaPlayerList[posicion].start()
                 playPause.setImageResource(R.drawable.boton_de_pausa)
-                Toast.makeText(requireContext(), "   Play", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.txt_play), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -70,19 +71,19 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
             inicializarMediaPLayer()
             actualizarInterfaz()
             playPause.setImageResource(R.drawable.boton_de_play)
-            Toast.makeText(requireContext(), "   Stop", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.txt_stop), Toast.LENGTH_SHORT).show()
         }
 
         // Método para el boton REPETIR
         btnRepetir.setOnClickListener {
             if (repetir) {
                 btnRepetir.setImageResource(R.drawable.repetir)
-                Toast.makeText(requireContext(), "No repetir", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.txt_no_repetir), Toast.LENGTH_SHORT).show()
                 mediaPlayerList[posicion].isLooping = false
                 repetir = false
             } else {
                 btnRepetir.setImageResource(R.drawable.repetir2)
-                Toast.makeText(requireContext(), "Repetir", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.txt_repetir), Toast.LENGTH_SHORT).show()
                 mediaPlayerList[posicion].isLooping = true
                 repetir = true
             }
@@ -96,7 +97,7 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
                 mediaPlayerList[posicion].start()
                 actualizarInterfaz()
             } else {
-                Toast.makeText(requireContext(), "No hay mas canciones", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.txt_no_canciones), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -111,7 +112,7 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
                 actualizarInterfaz()
 
             } else {
-                Toast.makeText(requireContext(), "No hay mas canciones", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.txt_no_canciones), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -132,14 +133,14 @@ class ReproductorFragment : Fragment(R.layout.fragment_reproductor) {
             mediaPlayer.stop()
             mediaPlayer.release()
         }
+        requireActivity().supportFragmentManager.setFragmentResult(REQUEST_CODE, bundleOf(
+            KEY_MSG to getString(R.string.txt_volvimos))
+        )
+        requireActivity().supportFragmentManager.popBackStack()
         //Log.d("CicloVida2", "Método destroy")
     }
 
     companion object {
-
-        private const val MI_NOMBRE = "nombre"
-        private const val MI_EDAD = "edad"
-
         // Fun para pasar información
         fun newInstance(mscSelected: Int) = ReproductorFragment().apply {
 
