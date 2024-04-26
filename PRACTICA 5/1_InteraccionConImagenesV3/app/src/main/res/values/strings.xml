@@ -4,4 +4,5 @@
     <string name="txt_select">Seleccione una imagen</string>
     <string name="btn_select">Seleccionar</string>
     <string name="btn_return">Volver</string>
+    <string name="txt_volvimos">!Volvimos!</string>
 </resources>

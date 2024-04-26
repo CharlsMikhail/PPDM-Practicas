@@ -46,7 +46,7 @@ class ImageFragment : Fragment(R.layout.fragment_image) {
 
         btnBack.setOnClickListener {
             requireActivity().supportFragmentManager.setFragmentResult(REQUEST_CODE, bundleOf(
-                KEY_MSG to "volvimos!"))
+                KEY_MSG to getString(R.string.txt_volvimos)))
             requireActivity().supportFragmentManager.popBackStack()
         }
     }

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
  * estos fragmentos se comunican con botones, "siguiente" y "volver".
  * @author Carlos Mijail Mamani Anccasi
  * @creationDate 25/04/24
- * @lastModification 25/04/24
+ * @lastModification 26/04/24
  */
 
 class MainActivity : AppCompatActivity() {
