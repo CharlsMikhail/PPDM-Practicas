@@ -3,6 +3,7 @@ package com.example.gestiondeusuarios
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
+const val KEY_USUARIO = "usuario"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
