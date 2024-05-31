@@ -2,4 +2,9 @@
     <string name="app_name">GestionDeUsuarios</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_lista_usuarios">Lista de usuarios</string>
+    <string name="txt_editar_usuario">Editar Usuario</string>
+    <string name="description_lista_contactos">Se listan los usuarios</string>
+    <string name="img_de_elimitar_user">"es la imagen que te permite elimanr un user "</string>
+    <string name="img_de_user">imagen del usuario</string>
 </resources>

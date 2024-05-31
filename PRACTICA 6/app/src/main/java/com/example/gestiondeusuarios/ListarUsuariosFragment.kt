@@ -26,7 +26,7 @@ class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
     }
 
     private fun eventos(view: View) {
-        val btnAdd = view.findViewById<FloatingActionButton>(R.id.btnAddTarjeta)
+        val btnAdd = view.findViewById<FloatingActionButton>(R.id.btn_add_usuarios)
 
         btnAdd.setOnClickListener{
             view.findNavController().navigate(R.id.action_listarUsuariosFragment_to_editarUsuarioFragment)
@@ -37,13 +37,14 @@ class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
         val manager = LinearLayoutManager(context)
         usuarioAdapter = UsuarioAdapter(UsuarioProvider.listaUsuarios, R.layout.item_tarjeta_x) { user -> onItemSelected(user)} //ojito
         val decoration = DividerItemDecoration(context, manager.orientation)
-        val usersRecyler = view.findViewById<RecyclerView>(R.id.lista_tarjetas_x)
+        val usersRecyler = view.findViewById<RecyclerView>(R.id.lista_usuarios_x)
         usersRecyler.layoutManager = manager
         usersRecyler.adapter = usuarioAdapter
         usersRecyler.addItemDecoration(decoration)
     }
 
     private fun onItemSelected(user: Usuario) {
+        requireView().findNavController().navigate(R.id.editarUsuarioFragment)
         Toast.makeText(context, "Hola " + user.nombre, Toast.LENGTH_SHORT).show()
     }
 }
