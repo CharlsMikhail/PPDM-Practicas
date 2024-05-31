@@ -7,4 +7,11 @@
     <string name="description_lista_contactos">Se listan los usuarios</string>
     <string name="img_de_elimitar_user">"es la imagen que te permite elimanr un user "</string>
     <string name="img_de_user">imagen del usuario</string>
+    <string name="txt_nombre">Nombres:</string>
+    <string name="txt_dni">DNI:</string>
+    <string name="txt_email">Email:</string>
+    <string name="btn_update_user">Actualizar Informacion</string>
+    <string name="hint_dni">Ingrese DNI</string>
+    <string name="hint_email">Ingrese email</string>
+    <string name="hint_name">Ingrese nombres</string>
 </resources>

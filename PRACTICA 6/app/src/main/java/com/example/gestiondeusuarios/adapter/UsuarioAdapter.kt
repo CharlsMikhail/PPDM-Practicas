@@ -1,14 +1,16 @@
 package com.example.gestiondeusuarios.adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestiondeusuarios.Usuario
+import java.io.Serializable
 
-class UsuarioAdapter(private val items: MutableList<Usuario>, private val idLayout: Int, val onItemSelected: (Usuario) -> Unit): RecyclerView.Adapter<UsuarioViewHolder>() {
+class UsuarioAdapter(private val items: MutableList<Usuario>, private val idLayout: Int, val onItemSelected: (Usuario, Int) -> Unit): RecyclerView.Adapter<UsuarioViewHolder>(), Serializable {
 
     lateinit private var context2: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
@@ -22,16 +24,16 @@ class UsuarioAdapter(private val items: MutableList<Usuario>, private val idLayo
     override fun onBindViewHolder(holder: UsuarioViewHolder, position: Int) {
         val item = items[position]
         holder.render(item, onItemSelected) {
-            deleteTarjeta(position, item)
+            deleteUsuario(position, item)
         }
     }
 
-    fun addTarjeta(tarjeta: Usuario) {
-        items.add(0, tarjeta)
-        notifyItemInserted(0)
+    fun addTarjeta(usuario: Usuario) {
+        items.add(2, usuario)
+        notifyItemInserted(2)
     }
 
-    private fun deleteTarjeta(index: Int, item: Usuario) {
+    private fun deleteUsuario(index: Int, item: Usuario) {
 
         val builder = AlertDialog.Builder(context2)
         builder.setTitle("Confirmación")

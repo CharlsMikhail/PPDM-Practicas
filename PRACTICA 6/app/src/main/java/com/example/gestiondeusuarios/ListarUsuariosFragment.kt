@@ -15,11 +15,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
 
     private lateinit var usuarioAdapter: UsuarioAdapter
-    private lateinit var usuarioActual: Usuario
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initRecycleView(view)
         eventos(view)
 
@@ -35,7 +33,7 @@ class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
 
     private fun initRecycleView(view: View) {
         val manager = LinearLayoutManager(context)
-        usuarioAdapter = UsuarioAdapter(UsuarioProvider.listaUsuarios, R.layout.item_tarjeta_x) { user -> onItemSelected(user)} //ojito
+        usuarioAdapter = UsuarioAdapter(UsuarioProvider.listaUsuarios, R.layout.item_tarjeta_x) { user, pos -> onItemSelected(user, pos)} //ojito
         val decoration = DividerItemDecoration(context, manager.orientation)
         val usersRecyler = view.findViewById<RecyclerView>(R.id.lista_usuarios_x)
         usersRecyler.layoutManager = manager
@@ -43,8 +41,11 @@ class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
         usersRecyler.addItemDecoration(decoration)
     }
 
-    private fun onItemSelected(user: Usuario) {
-        requireView().findNavController().navigate(R.id.editarUsuarioFragment)
-        Toast.makeText(context, "Hola " + user.nombre, Toast.LENGTH_SHORT).show()
+    private fun onItemSelected(user: Usuario, position: Int) {
+        val delivery = Bundle()
+        delivery.putSerializable(KEY_USUARIO, user)
+        delivery.putSerializable(KEY_ADAPTER, usuarioAdapter)
+        delivery.putInt(KEY_POS, position)
+        requireView().findNavController().navigate(R.id.editarUsuarioFragment, delivery)
     }
 }
