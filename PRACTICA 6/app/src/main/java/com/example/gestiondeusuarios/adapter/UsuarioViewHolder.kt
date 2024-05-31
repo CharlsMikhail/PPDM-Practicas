@@ -11,10 +11,13 @@ import com.example.gestiondeusuarios.Usuario
 class UsuarioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val viewNameUser = itemView.findViewById<TextView>(R.id.txt_name_user)
+    private val viewEmailUser = itemView.findViewById<TextView>(R.id.txt_email_user)
+
     private val btnEliminar = itemView.findViewById<ImageButton>(R.id.btn_eliminar_item_user)
 
     fun render(item: Usuario, onClickListener: (Usuario, Int) -> Unit, l: OnClickListener) {
         viewNameUser.text = item.nombre
+        viewEmailUser.text = item.email
         btnEliminar.setOnClickListener(l)
         itemView.setOnClickListener {
             onClickListener(item, adapterPosition)
