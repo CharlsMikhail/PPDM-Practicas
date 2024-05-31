@@ -14,4 +14,6 @@
     <string name="hint_dni">Ingrese DNI</string>
     <string name="hint_email">Ingrese email</string>
     <string name="hint_name">Ingrese nombres</string>
+    <string name="txt_agregar_user">Agregar Usuario</string>
+    <string name="btn_add_user">Agregar nuevo usuario</string>
 </resources>

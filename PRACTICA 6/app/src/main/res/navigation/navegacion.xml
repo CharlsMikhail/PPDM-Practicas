@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_listarUsuariosFragment_to_editarUsuarioFragment"
             app:destination="@id/editarUsuarioFragment" />
+        <action
+            android:id="@+id/action_listarUsuariosFragment_to_agregarUsuarioFragment"
+            app:destination="@id/agregarUsuarioFragment" />
     </fragment>
     <fragment
         android:id="@+id/editarUsuarioFragment"
         android:name="com.example.gestiondeusuarios.EditarUsuarioFragment"
         android:label="fragment_editar_usuario"
         tools:layout="@layout/fragment_editar_usuario" />
+    <fragment
+        android:id="@+id/agregarUsuarioFragment"
+        android:name="com.example.gestiondeusuarios.AgregarUsuarioFragment"
+        android:label="fragment_agregar_usuario"
+        tools:layout="@layout/fragment_agregar_usuario" />
 </navigation>

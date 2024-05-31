@@ -14,7 +14,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txt_editar_usuario"
+        android:text="@string/txt_agregar_user"
         android:textAlignment="center"
         android:textSize="25sp"
         android:layout_marginBottom="40dp"
@@ -70,7 +70,7 @@
         android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_update_user"
+        android:text="@string/btn_add_user"
         android:layout_gravity="center"
         android:layout_marginTop="70dp" />
 

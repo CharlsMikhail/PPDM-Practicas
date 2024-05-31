@@ -27,7 +27,9 @@ class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
         val btnAdd = view.findViewById<FloatingActionButton>(R.id.btn_add_usuarios)
 
         btnAdd.setOnClickListener{
-            view.findNavController().navigate(R.id.action_listarUsuariosFragment_to_editarUsuarioFragment)
+            val delivery = Bundle()
+            delivery.putSerializable(KEY_ADAPTER, usuarioAdapter)
+            view.findNavController().navigate(R.id.action_listarUsuariosFragment_to_agregarUsuarioFragment, delivery)
         }
     }
 

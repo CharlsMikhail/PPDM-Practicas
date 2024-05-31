@@ -29,22 +29,22 @@ class UsuarioAdapter(private val items: MutableList<Usuario>, private val idLayo
     }
 
     fun addTarjeta(usuario: Usuario) {
-        items.add(2, usuario)
-        notifyItemInserted(2)
+        items.add(0, usuario)
+        notifyItemInserted(0)
     }
 
     private fun deleteUsuario(index: Int, item: Usuario) {
 
         val builder = AlertDialog.Builder(context2)
         builder.setTitle("Confirmación")
-        builder.setMessage("¿Estás seguro de que deseas eliminar esta tarjeta: ${item.nombre}?")
+        builder.setMessage("¿Estás seguro de que deseas eliminar este usuario: ${item.nombre}?")
         builder.setPositiveButton("Sí") { _, _ ->
             // Acción a realizar si el usuario confirma la eliminación
 
             items.removeAt(index)
             notifyItemRemoved(index)
             notifyItemRangeChanged(index, items.size)
-            Toast.makeText(context2, "Tarjeta eliminada correctamente", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context2, "Usuario eliminado correctamente", Toast.LENGTH_SHORT).show()
         }
         builder.setNegativeButton("Cancelar") { dialog, _ ->
             // Acción a realizar si el usuario cancela la eliminación

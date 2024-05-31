@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.gestiondeusuarios.adapter.UsuarioAdapter
 import kotlin.properties.Delegates
@@ -36,9 +37,6 @@ class EditarUsuarioFragment : Fragment(R.layout.fragment_editar_usuario) {
         val etDNI = view.findViewById<EditText>(R.id.et_dni)
         val etEmail = view.findViewById<EditText>(R.id.et_email)
         val btnActualizarDatos = view.findViewById<Button>(R.id.btn_update)
-
-
-
 
 
         btnActualizarDatos.setOnClickListener {
@@ -74,6 +72,7 @@ class EditarUsuarioFragment : Fragment(R.layout.fragment_editar_usuario) {
 
             usuarioAdapter.editTarjeta(posicion, cuentaEditar)
 
+            Toast.makeText(view.context, "Usuario Actualizado", Toast.LENGTH_SHORT).show()
             view.findNavController().popBackStack()
 
         }
