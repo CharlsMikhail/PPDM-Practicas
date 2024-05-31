@@ -5,5 +5,6 @@ Los ejercicios de la practica 2 estan en: *PRACTICA 2/src*
 Los ejercicios de la practica 3 estan en: *PRACTICA 3 y 4/*  
 Los ejercicios de la practica 4 estan en: *PRACTICA 3 y 4/* (es una mejora con agregados)  
 Los ejercicios de la practica 5 estan en: *PRACTICA 5/*  
+El ejercicio de la practica 6 estan en: *PRACTICA 6/*  
 Link del repositorio: https://github.com/CharlsMikhail/PPDM-Practicas.git  
 Alumno: Carlos Mijail Mamani Anccasi  
