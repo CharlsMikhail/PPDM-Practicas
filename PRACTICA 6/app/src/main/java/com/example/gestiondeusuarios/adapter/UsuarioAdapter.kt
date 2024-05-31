@@ -1,5 +1,6 @@
 package com.example.gestiondeusuarios.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import java.io.Serializable
 class UsuarioAdapter(private val items: MutableList<Usuario>, private val idLayout: Int, val onItemSelected: (Usuario, Int) -> Unit): RecyclerView.Adapter<UsuarioViewHolder>(), Serializable {
 
     lateinit private var context2: Context
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
         context2 = parent.context
         val itemView = LayoutInflater.from(parent.context).inflate(idLayout, parent, false)
@@ -59,4 +61,11 @@ class UsuarioAdapter(private val items: MutableList<Usuario>, private val idLayo
         items[index] = tarjeta
         notifyItemChanged(index)
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun ordenarAleatoriamente() {
+        items.shuffle()
+        notifyDataSetChanged()
+    }
+
 }

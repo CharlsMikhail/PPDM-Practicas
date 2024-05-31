@@ -16,4 +16,6 @@
     <string name="hint_name">Ingrese nombres</string>
     <string name="txt_agregar_user">Agregar Usuario</string>
     <string name="btn_add_user">Agregar nuevo usuario</string>
+    <string name="sv_usuarios_search">Ingrese el nombre de un usuario</string>
+    <string name="btn_aleatorio">Ordenar aleatoriamente</string>
 </resources>

@@ -3,12 +3,20 @@ package com.example.gestiondeusuarios
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Button
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestiondeusuarios.adapter.UsuarioAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
+/**
+ * @problemDescription Se solicita el diseño de una lista de usuarios, usando Recycler View y Card View para GESTION DE USUARIOS.
+ * @author Carlos Mijail Mamani Anccasi
+ * @creationDate 29/05/24
+ * @lastModification 31/05/24
+ */
 
 class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
 
@@ -18,6 +26,7 @@ class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
         super.onViewCreated(view, savedInstanceState)
         initRecycleView(view)
         eventos(view)
+
 
     }
 
@@ -29,6 +38,11 @@ class ListarUsuariosFragment : Fragment(R.layout.listar_contactos) {
             delivery.putSerializable(KEY_ADAPTER, usuarioAdapter)
             view.findNavController().navigate(R.id.action_listarUsuariosFragment_to_agregarUsuarioFragment, delivery)
         }
+
+        view.findViewById<Button>(R.id.btn_aleatorio).setOnClickListener {
+            usuarioAdapter.ordenarAleatoriamente()
+        }
+
     }
 
     private fun initRecycleView(view: View) {
